@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Detail Aplikasi | Portfolio</title>
+	<!-- CUSTOM CSS -->
+	<link rel="stylesheet" type="text/css" href="CSS_detail_aplikasi.css">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<!-- BOOTSTRAP -->
+
+	<!-- font -->
+	<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome/css/font-awesome.min.css">
+
+	<!-- custom style  -->
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+<body >
+
+	<nav class="navbar navbar-inverse navbar-fixed-top navbar_detail" id="mainnav" data-spy="affix" data-offset-top="200">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#page-top" onclick="dazzle()"><i class="fa fa-home"> Dazzle</i></a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MyNavbar" aria-controls="MyNavbar" aria-expanded="false" aria-label="Toggle Navigation">Menu
+				<i class="fa fa-bars"></i>
+				</button>
+			</div>
+			
+			<div class="collapse navbar-collapse navbar-right" id="MyNavbar">
+				<ul class="nav navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="#tababout" onclick="about()">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="#tabportfolio" onclick="achievement()">Achievement</a></li>
+					<li class="nav-item"><a class="nav-link" href="#tabongoingproject" onclick="ongoingproject()">On Going Project</a></li>
+					<li class="nav-item"><a class="nav-link" href="#tabcontact" onclick="contact()">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<section id="detail_aplikasi">
+		<div class="container">	
+
+			<div class="row" style="margin-top: 7%; margin-bottom: 1%;">
+				<div class="col-xs-6 col-md-6 col-sm-6 col-lg-6 leftdes">
+					<div class="foto_detail_apps">
+						<img src="assets/img/aplikasi/arguino_cafe.jpg" alt="Image Detail Application" id="myImg">
+					</div>
+					
+					<div class="bg-creator">
+						<table class="table">
+							<tr>
+								<th><i class="fa fa-star"></i> Application Name</th>
+								<td>Arguino Cafe</td>
+							</tr>
+							<tr>
+								<th><i class="fa fa-user-circle"></i> Developer</th>
+								<td><a href="detail_profile4.html">Tri Kurnia Sari</a></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+				<div class="col-xs-5 col-md-5 col-sm-5 col-lg-5 deskripsi">
+					<table>
+						<tbody>
+							<tr>
+								<th><i class="fa fa-quote-right"></i> Description</th>
+							</tr>
+							<tr>
+								<td style=" min-height: 450px;">
+									<p style="text-align: justify;">Queuing is a problem that most consumers do not like when in a cafe or restaurant. Therefore, we make a reservation system at a cafe without having to make consumers queue up. Consumers simply sit in their respective seats, choose the desired food or drink through the system, and after that the waiter will deliver the desired food or drink.</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<!-- The Modal -->
+				<div id="myModal" class="modal">
+
+				  <!-- The Close Button -->
+				  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+				  <!-- Modal Content (The Image) -->
+				  <img class="modal-content" id="img01">
+
+				  <!-- Modal Caption (Image Text) -->
+				  <div id="caption">
+				  	<p style="text-align: justify;">Queuing is a problem that most consumers do not like when in a cafe or restaurant. Therefore, we make a reservation system at a cafe without having to make consumers queue up. Consumers simply sit in their respective seats, choose the desired food or drink through the system, and after that the waiter will deliver the desired food or drink.</p>
+				  </div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<script type="text/javascript">
+		// Get the modal
+		var modal = document.getElementById('myModal');
+
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementById('myImg');
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+		img.onclick = function(){
+		    modal.style.display = "block";
+		    modalImg.src = this.src;
+		    captionText.innerHTML = this.alt;
+		}
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() { 
+		  modal.style.display = "none";
+		}
+		function about() {
+            window.location = 'index.html#tababout';
+        }
+
+        function achievement() {
+        	window.location = 'index.html#tabportfolio';
+        }
+
+        function ongoingproject(){
+        	window.location = 'index.html#tabongoingproject';
+        }
+
+        function contact(){
+        	window.location = 'index.html#tabcontact';
+        }
+
+        function dazzle(){
+          window.location = 'index.html';
+        }
+	</script>
+
+		<!-- Footer -->
+	    <footer class="footer">
+	        Copyright &copy; Dazzle 2017
+	    </footer>
+
+		<!-- jquery -->
+		
+		<script src="assets/js/jquery.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+
+		<!-- custom -->
+		<script src="assets/Owner/jav.js"></script>
+	</body>
+</html>

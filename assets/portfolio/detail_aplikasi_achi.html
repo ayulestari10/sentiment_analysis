@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Detail Aplikasi | Portfolio</title>
+	<!-- CUSTOM CSS -->
+	<link rel="stylesheet" type="text/css" href="CSS_detail_aplikasi.css">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<!-- BOOTSTRAP -->
+
+	<!-- font -->
+	<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome/css/font-awesome.min.css">
+
+	<!-- custom style  -->
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+<body >
+
+	<nav class="navbar navbar-inverse navbar-fixed-top navbar_detail" id="mainnav" data-spy="affix" data-offset-top="200">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#page-top" onclick="dazzle()"><i class="fa fa-home"> Dazzle</i></a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MyNavbar" aria-controls="MyNavbar" aria-expanded="false" aria-label="Toggle Navigation">Menu
+				<i class="fa fa-bars"></i>
+				</button>
+			</div>
+			
+			<div class="collapse navbar-collapse navbar-right" id="MyNavbar">
+				<ul class="nav navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="#tababout" onclick="about()">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="#tabportfolio" onclick="achievement()">Achievement</a></li>
+					<li class="nav-item"><a class="nav-link" href="#tabongoingproject" onclick="ongoingproject()">On Going Project</a></li>
+					<li class="nav-item"><a class="nav-link" href="#tabcontact" onclick="contact()">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<section id="detail_aplikasi">
+		<div class="container">	
+
+			<div class="row" style="margin-top: 7%; margin-bottom: 1%;">
+				<div class="col-xs-6 col-md-6 col-sm-6 col-lg-6 leftdes">
+					<div class="foto_detail_apps">
+						<img src="assets/img/aplikasi/layanan.png" alt="Image Detail Application" id="myImg">
+					</div>
+					
+					<div class="bg-creator">
+						<table class="table">
+							<tr>
+								<th><i class="fa fa-star"></i> Application Name</th>
+								<td>Find Laundry</td>
+							</tr>
+							<tr>
+								<th><i class="fa fa-user-circle"></i> Developer</th>
+								<td><a href="detail_profile.html">Achi Aprilia A</a></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+				<div class="col-xs-5 col-md-5 col-sm-5 col-lg-5 deskripsi">
+					<table>
+						<tbody>
+							<tr>
+								<th><i class="fa fa-quote-right"></i> Description</th>
+							</tr>
+							<tr>
+								<td style=" min-height: 450px;">
+									<p style="text-align: justify;">FindLaundry provides many features that users can use. A main feature in FindLaundry is a search engine that can be used in location based searches to find all nearby Laundry with user location and by laundry name to find favorite laundry or user-subscription laundry instantly. Distributors of laundry services can register laundry services that they manage and become FindLaundry partners. The FindLaundry system also assists laundry service managers in the most frequent problems of swidden or lost clothing. This system holds all customer clothing data so that customer clothing is guaranteed not to be confused or lost. The special courier FindLaundry will bring a special box bag that has been marked with customer data when making an order. A customer's clothing can be secured to the point of destination. Laundry service will feel facilitated with the help of a courier who has labeled his own goods from customers in the special box bag.</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<!-- The Modal -->
+				<div id="myModal" class="modal">
+
+				  <!-- The Close Button -->
+				  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+				  <!-- Modal Content (The Image) -->
+				  <img class="modal-content" id="img01">
+
+				  <!-- Modal Caption (Image Text) -->
+				  <div id="caption">
+				  	<p style="text-align: justify;">FindLaundry provides many features that users can use. A main feature in FindLaundry is a search engine that can be used in location based searches to find all nearby Laundry with user location and by laundry name to find favorite laundry or user-subscription laundry instantly. Distributors of laundry services can register laundry services that they manage and become FindLaundry partners. The FindLaundry system also assists laundry service managers in the most frequent problems of swidden or lost clothing. This system holds all customer clothing data so that customer clothing is guaranteed not to be confused or lost. The special courier FindLaundry will bring a special box bag that has been marked with customer data when making an order. A customer's clothing can be secured to the point of destination. Laundry service will feel facilitated with the help of a courier who has labeled his own goods from customers in the special box bag.</p>
+				  </div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<script type="text/javascript">
+		// Get the modal
+		var modal = document.getElementById('myModal');
+
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementById('myImg');
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+		img.onclick = function(){
+		    modal.style.display = "block";
+		    modalImg.src = this.src;
+		    captionText.innerHTML = this.alt;
+		}
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() { 
+		  modal.style.display = "none";
+		}
+
+		function about() {
+            window.location = 'index.html#tababout';
+        }
+
+        function achievement() {
+        	window.location = 'index.html#tabportfolio';
+        }
+
+        function ongoingproject(){
+        	window.location = 'index.html#tabongoingproject';
+        }
+
+        function contact(){
+        	window.location = 'index.html#tabcontact';
+        }
+
+        function dazzle(){
+          window.location = 'index.html';
+        }
+	</script>
+
+		<!-- Footer -->
+	    <footer class="footer">
+	        Copyright &copy; Dazzle 2017
+	    </footer>
+
+		<!-- jquery -->
+		
+		<script src="assets/js/jquery.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+
+		<!-- custom -->
+		<script src="assets/Owner/jav.js"></script>
+	</body>
+</html>

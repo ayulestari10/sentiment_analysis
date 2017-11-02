@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Portfolio</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- BOOTSTRAP -->
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome/css/font-awesome.min.css">
+		<style type="text/css">
+			.view_detail{
+			  color: #fff;
+			}
+			.information{
+				color: #012766;
+			}
+			.brief_title{
+				font-size: 18px;
+				color: #008975;
+			}
+			.deskripsi_singkat{
+			  text-align: justify;
+			}
+			.image_hover{
+			  position: relative;
+  			  width: 50%;
+			}
+			.image_project {
+			  width: 80%;
+			  height: 100%;
+
+			}
+			.overlay {
+			  position: absolute;
+			  bottom: 100%;
+			  left: 0;
+			  right: 0;
+			  background-color: #008CBA;
+			  opacity: 0.9;
+			  overflow: hidden;
+			  width: 80%;
+			  height:0;
+			  transition: .5s ease;
+			}
+			.image_hover:hover .overlay {
+			  bottom: 0;
+			  height: 100%;
+			}
+			.text {
+			  text-align: center;
+			  white-space: nowrap; 
+			  color: #fff;
+			  font-size: 16px;
+			  position: absolute;
+			  overflow: hidden;
+			  top: 50%;
+			  left: 50%;
+			  transform: translate(-50%, -50%);
+			  -ms-transform: translate(-50%, -50%);
+			}
+			.tombol_project{
+			  margin-top: 140px;
+			  margin-left: 198px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+			<div class="container">
+				<hr>
+				<div class="row">
+					<div class="container">
+						<h2 class="title_sentiment">Sentiment Analysis of Informatics Using Naive Bayes Method</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-sm-6" id="description">
+			            <h3>Description</h3>
+			            <p class="deskripsi_singkat">
+							Informatics is one of the majors that exist in the Computer Science Faculty of Sriwijaya University. The major was established in 2004 and has more than 400 students. The number of students who have or are studying in the informatics make a lot of opinions formed about how it feels to study in this major. Our research will group these opinions. This study uses the Naive Bayes method for grouping those opinions.</p>
+					</div>
+					<div class="col-lg-4 col-sm-5 image_hover" id="image_description">
+						<img src="assets/img/aplikasi/layanan.png" class="image_project" alt="">
+						<div class="overlay">
+							<div class="text">Further information about our project <br>
+					    		<a href="detail_project.html" class="information">READ <i class="fa fa-chevron-circle-right"></i></a>
+					 		</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		<!-- jquery -->
+		
+		<script src="assets/js/jquery.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+
+		<!-- custom -->
+		<script src="assets/Owner/jav.js"></script>
+	</body>
+</html>
