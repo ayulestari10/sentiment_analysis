@@ -28,4 +28,6 @@ class Sentiment_analysis extends MY_Controller
         $this->template($this->data);
     }
 
+
+
 }

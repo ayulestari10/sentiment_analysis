@@ -17,6 +17,9 @@ class MY_Controller extends CI_Controller
 	    elseif ($template == 'home') {
 	      return $this->load->view('home/template/layout', $data);
 	    }
+	    elseif ($template == 'input') {
+	      return $this->load->view('templates/layout', $data);
+	    }
 	}
 
 	public function POST($name)
