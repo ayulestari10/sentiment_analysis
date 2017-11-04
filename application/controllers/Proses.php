@@ -29,33 +29,35 @@ class Proses extends MY_Controller
     }
 
     public function input(){
-        $input = $this->POST('submit-input');
-        if(isset($input)){
+        
+        if($this->POST('submit-input')){
             $data = $this->POST('text_input');
-
             $casefolding = $this->casefolding($data);
-            echo $casefolding.'<br><br>';
+            // echo $casefolding.'<br><br>';
 
             $sentence_splitter= $this->sentence_splitter($data);
-            print_r($sentence_splitter);
+            // print_r($sentence_splitter);
             
             $tokenizing = $this->tokenizing($sentence_splitter);
-            echo "<br><br>";
-            print_r($tokenizing);
-            exit;
+            // echo "<br><br>";
+            // print_r($tokenizing);
+            // exit;
 
-            redirect('Proses/input');
-            //$this->load->view('input_pendapat', $hasil_praproses);
+            $this->data['sentence_splitter']    = $sentence_splitter;
+            $this->data['casefolding']          = $casefolding;
+            $this->data['tokenizing']           = $tokenizing;
+            // redirect('Proses/input');
+            // $this->load->view('input_pendapat', $hasil_praproses);
 
-            exit;
+            // exit;
         }
-        else{
-            $this->flashmsg('Anda harus mengisi pendapat anda','danger');
-            exit;
-        }
+        // else{
+        //     $this->flashmsg('Anda harus mengisi pendapat anda','danger');
+        //     // exit;
+        // }
 
         $this->data['title'] = 'Input Pendapat';
-        $this->data['sentence_splitter'] = $sentence_splitter;
+        // $this->data['sentence_splitter'] = $sentence_splitter;
         $this->data['content'] = 'input_pendapat';
         $this->template($this->data, 'input');
     }

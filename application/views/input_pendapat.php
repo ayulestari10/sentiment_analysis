@@ -1,4 +1,3 @@
-
 	<div class="row" style="text-align: center; padding: 15%;">
 		<h3 style="margin-bottom: 2%;">Masukkan Pendapat Anda</h3>
 		<div>
@@ -15,16 +14,16 @@
 		<?= form_close() ?>
 	</div>
 	
-	<?php if(isset($hasil_praproses)): ?>
+	<?php if(isset($sentence_splitter)): ?>
 	<div class="row">
 		<div class="col-md-4">
 			<table class="table table-stripped">
 				<tr>Sentence Splitter</tr>
-				<tr>
-					<?php foreach($hasil_praproses as $sentence_splitter):  ?>
-						<?= $sentence_splitter ?>
-					<?php endforeach; ?>
-				</tr>
+				<?php foreach($sentence_splitter as $sentence):  ?>
+					<tr>
+						<td><?= $sentence ?></td>
+					</tr>
+				<?php endforeach; ?>
 			</table>
 		</div>
 	</div>

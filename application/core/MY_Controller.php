@@ -14,10 +14,10 @@ class MY_Controller extends CI_Controller
 	    if ($template == 'admin') {
 	      return $this->load->view('admin/template/layout', $data);
 	    }
-	    elseif ($template == 'home') {
+	    else if ($template == 'home') {
 	      return $this->load->view('home/template/layout', $data);
 	    }
-	    elseif ($template == 'input') {
+	    else if ($template == 'input') {
 	      return $this->load->view('templates/layout', $data);
 	    }
 	}
