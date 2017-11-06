@@ -14,10 +14,20 @@
 		<?= form_close() ?>
 	</div>
 	
-	<?php if(isset($sentence_splitter)): ?>
+	
 	<div class="row">
+		<?php if(isset($casefolding)): ?>
 		<div class="col-md-4">
-			<table class="table table-stripped">
+			<table class="table table-striped">
+				<tr>Case Folding</tr>
+				<tr><p><?= $casefolding  ?></p></tr>
+			</table>
+		</div>
+		<?php endif; ?>
+
+		<?php if(isset($sentence_splitter)): ?>
+		<div class="col-md-4">
+			<table class="table table-striped">
 				<tr>Sentence Splitter</tr>
 				<?php foreach($sentence_splitter as $sentence):  ?>
 					<tr>
@@ -26,9 +36,20 @@
 				<?php endforeach; ?>
 			</table>
 		</div>
+		<?php endif; ?>
+
+		<?php if(isset($tokenizing)): ?>
+		<div class="col-md-4">
+			<table class="table table-striped">
+				<tr>Tokenizing</tr>
+				<?php for($i=0; $i<count($tokenizing); $i++):  ?>
+					<?php for($j=0; $j<count($tokenizing[$i]); $j++):  ?>
+						<tr>
+							<td><?= $tokenizing[$i][$j] ?></td>
+						</tr>
+					<?php endfor; ?>	
+				<?php endfor; ?>
+			</table>
+		</div>
+		<?php endif; ?>
 	</div>
-	<?php else: ?>
-	<div>
-		<h1>Tidak Terpenuhi</h1>
-	</div>
-	<?php endif; ?>
