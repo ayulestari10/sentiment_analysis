@@ -31,13 +31,13 @@
 
     <div class ="container">
         <div class="login">
-            <h1>Login</h1>
+            <img src="<?=base_url('assets/img/logo/asof.png')?>">
             <?=form_open('login')?>
                 <fieldset>
                   <?= $this->session->flashdata('msg') ?>
                     <input type="text" name="u" placeholder="Username" required="required" />
                     <input type="password" name="p" placeholder="Password" required="required" />
-                    <button type="submit" class="btn btn-primary btn-block btn-large">Masuk</button>
+                    <button type="submit" class="btn button-color btn-block btn-large">Masuk</button>
                 </fieldset>
             <?=form_close()?>
         </div>

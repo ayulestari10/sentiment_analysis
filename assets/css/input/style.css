@@ -1,0 +1,9 @@
+.box {
+	width: 120px;
+	height: 25px;
+}
+
+.transparant {
+	opacity: 0.8;
+	filter:alpha(opacity=80); 
+}
