@@ -37,7 +37,7 @@
                   <?= $this->session->flashdata('msg') ?>
                     <input type="text" name="username" placeholder="Username" required="required" />
                     <input type="password" name="password" placeholder="Password" required="required" />
-                    <button type="submit" name="login-submit" class="btn button-color btn-block btn-large">Masuk</button>
+                    <input type="submit" name="login-submit" value="Login" class="btn button-color btn-block btn-large">
                 </fieldset>
             <?=form_close()?>
         </div>
