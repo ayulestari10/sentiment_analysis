@@ -9,7 +9,15 @@ class Preprocessing{
      *    @return data
     */
     public function casefolding($data){
-        return strtolower($data);
+
+        if(is_array($data)){
+            
+            $implode = implode(" ", $data);
+            return strtolower($implode); 
+        }
+        else {
+            return strtolower($data);    
+        }
     }
 
 
@@ -71,7 +79,7 @@ class Preprocessing{
      *
      *  @author Ayu Lestari
      *  @param data -> token2
-     *  @return array
+     *  @return array of object
     */
 
     public function stopwords_removal($data){

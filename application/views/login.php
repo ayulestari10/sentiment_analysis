@@ -32,12 +32,12 @@
     <div class ="container">
         <div class="login">
             <img src="<?=base_url('assets/img/logo/asof.png')?>">
-            <?=form_open('login')?>
+            <?=form_open('Login')?>
                 <fieldset>
                   <?= $this->session->flashdata('msg') ?>
-                    <input type="text" name="u" placeholder="Username" required="required" />
-                    <input type="password" name="p" placeholder="Password" required="required" />
-                    <button type="submit" class="btn button-color btn-block btn-large">Masuk</button>
+                    <input type="text" name="username" placeholder="Username" required="required" />
+                    <input type="password" name="password" placeholder="Password" required="required" />
+                    <button type="submit" name="login-submit" class="btn button-color btn-block btn-large">Masuk</button>
                 </fieldset>
             <?=form_close()?>
         </div>

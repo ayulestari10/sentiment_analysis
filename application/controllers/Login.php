@@ -14,20 +14,7 @@ class Login extends MY_Controller
 		$username = $this->session->userdata('username');
 		if (isset($username))
 		{
-			$this->data['id_role'] = $this->session->userdata('id_role');
-			switch ($this->data['id_role'])
-			{
-				case 1:
-					redirect('admin');
-					break;
-				case 2:
-					redirect('kabag_sumda');
-					break;
-				case 3:
-					redirect('admin-gudang');
-					break;
-			}
-
+			redirect('Proses');
 			exit;
 		}
 		$this->load->model('User_m');
@@ -37,6 +24,7 @@ class Login extends MY_Controller
 	{
 		if ($this->POST('login-submit'))
 		{
+			
 			if (!$this->User_m->required_input(['username','password'])) 
 			{
 				$this->flashmsg('Data harus lengkap','warning');
@@ -45,8 +33,8 @@ class Login extends MY_Controller
 			}
 			
 			$this->data = [
-			'username'	=> $this->POST('username'),
-			'password'	=> md5($this->POST('password'))
+				'username'	=> $this->POST('username'),
+				'password'	=> md5($this->POST('password'))
 			];
 
 			$result = $this->User_m->login($this->data);

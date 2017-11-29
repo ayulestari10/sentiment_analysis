@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Controller extends CI_Controller
 {
-  public $title = ' | POLRESTA PALEMBANG';
+  public $title = ' | Sentiment Analysis';
 	public function __construct()
 	{
 		parent::__construct();
