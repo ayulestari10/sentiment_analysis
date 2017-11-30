@@ -74,6 +74,11 @@ class Preprocessing{
         return $hasil;
     }
 
+    public function tokenizing2($data, $delimiter)
+    {
+        return explode($delimiter, $data);
+    }
+
     /**
      *  Method ini digunakan untuk praproses stopword_removal.
      *
@@ -89,10 +94,17 @@ class Preprocessing{
         $kamus = $this->read_file_by_line("kamus_stopwords_removal");
 
         foreach($data as $kata){
+            $kata = array_diff($kata, [""]);
             $hasil[] = array_diff($kata, $kamus);
         }            
 
         return $hasil;
+    }
+
+    public function stopwords_removal2($data)
+    {
+        $kamus = $this->read_file_by_line("kamus_stopwords_removal");
+        return array_diff($data, $kamus);
     }
 
     /**
