@@ -110,122 +110,11 @@ class Proses extends MY_Controller
         return $stopwords_removal;
     }
 
-    /**
-     *  Method ini digunakan untuk melakukan proses training.
-     *  @author Ayu Lestari
-     *  @return bobot setiap kata
-
-    */
     public function training(){
-        // baca file 
+        // Membaca data latih
         $pendapat_positif = $this->preprocessing->read_file_by_line('positif');
         $pendapat_negatif = $this->preprocessing->read_file_by_line('negatif');
 
-        
-        // CONTOH PERHITUNGAN DULU
-
-        // Insert Data Latih
-
-        $pendapat_positif = [
-            'Saya sangat menyukai dunia Informatika, dan sebenarnya dari kecil itu saya sangat suka tentang hal-hal yang berbau komputer.',
-            'Makanya saya berniat untuk masuk ke Jurusan Komputer.'
-        ];
-
-        $pendapat_negatif = [
-            'Saya menyesal masuk jurusan teknik informatika, karena logika saya lemah.',
-            'Saya salah masuk jurusan ke Teknik Informatika'
-        ];
-
-        // lakukan praproses data
-        $praproses_pendapat_positif = $this->praproses_data($pendapat_positif);
-        $praproses_pendapat_negatif = $this->praproses_data($pendapat_negatif);
-
-
-        // Perhitungan Kategori Positif
-
-        // Hitung probabilitas positif
-
-        $jum_doc_positif = 2;
-        $data_latih = 4;
-
-        $probab_positif = $jum_doc_positif/$data_latih;
-        $jumlah_kata_unik = 0;
-
-        // Hitung probabilitas kata pada kategori positif
-
-        $jumlah_kata_positif = 0; // n
-        $frek_kata_positif = []; //nk
-
-        // Hitung Jumlah Kata Positif
-        foreach($praproses_pendapat_positif as $row){
-            $jumlah_kata_positif += count($row);
-            
-            foreach($row as $col){
-                if(!isset($frek_kata_positif[$col])){
-                    $frek_kata_positif[$col] = 1;
-                }
-                else {
-                    $frek_kata_positif[$col]++;
-                }
-            }
-        }
-
-        // untuk menghapus elemen array dengan key empty string 
-        unset($frek_kata_positif[""]);
-
-
-        // Hitung probabilitas kata pada kategori negatif
-
-        $jumlah_kata_negatif = 0; // n
-        $frek_kata_negatif = []; //nk
-
-        foreach($praproses_pendapat_negatif as $row){
-            // $jumlah_kata_negatif += count($row);
-            
-            foreach($row as $col){
-                if(!isset($frek_kata_negatif[$col])){
-                    $frek_kata_negatif[$col] = 1;
-                }
-                else {
-                    $frek_kata_negatif[$col]++;
-                }
-            }
-        }
-
-        // untuk menghapus elemen array dengan key empty string 
-        unset($frek_kata_negatif[""]);
-        $jumlah_kata_positif = count($frek_kata_positif);
-        $jumlah_kata_negatif = count($frek_kata_negatif);
-        $jumlah_kata_unik = count($frek_kata_positif) + count($frek_kata_negatif);
-        $jumlah_kata_semua_kategori = $jumlah_kata_positif+$jumlah_kata_negatif; // kosakata
-
-        $probab_kata = [];
-
-        // foreach ($frek_kata_positif as $key => $value) {
-        //     $probab_kata[$key]['positif'] = ($value + 1)/($jumlah_kata_positif+$jumlah_kata_semua_kategori);
-        // }
-
-        // foreach ($frek_kata_negatif as $key => $value) {
-        //     $probab_kata[$key]['negatif'] = ($value + 1)/($jumlah_kata_negatif+$jumlah_kata_semua_kategori);
-        // }
-
-        $this->dump($frek_kata);
-        exit;
-       
-        $this->data['title'] = 'Input Pendapat';
-        $this->data['content'] = 'input_pendapat';
-        $this->template($this->data, 'input');
-    }
-
-    public function training2(){
-        // baca file 
-        $pendapat_positif = $this->preprocessing->read_file_by_line('positif');
-        $pendapat_negatif = $this->preprocessing->read_file_by_line('negatif');
-
-        
-        // CONTOH PERHITUNGAN DULU
-
-        // Insert Data Latih
 
         // cari prior probability
         $total_dokumen = count($pendapat_positif) + count($pendapat_negatif);
@@ -239,7 +128,7 @@ class Proses extends MY_Controller
         $praproses_pendapat_positif = $this->praproses_data($pendapat_positif);
         $praproses_pendapat_negatif = $this->praproses_data($pendapat_negatif);
 
-        $frekuensi_kata = [];
+        $frekuensi_kata = []; // untuk semua kategori
         $frekuensi_kata_positif = [];
         $frekuensi_kata_negatif = [];
 
@@ -340,53 +229,66 @@ class Proses extends MY_Controller
         // $this->dump($frekuensi_kata_negatif);
     }
 
-    public function testing2()
+    public function testing()
     {
-        $pendapat_positif = $this->preprocessing->read_file_by_line('positif');
-        $pendapat_negatif = $this->preprocessing->read_file_by_line('negatif');
+        if($this->POST('submit-input')){
+            $pendapat_awal = $this->POST('pendapat');
 
-        
-        // CONTOH PERHITUNGAN DULU
+            $pendapat_positif = $this->preprocessing->read_file_by_line('positif');
+            $pendapat_negatif = $this->preprocessing->read_file_by_line('negatif');
 
-        // Insert Data Latih
+            // cari prior probability
+            $total_dokumen = count($pendapat_positif) + count($pendapat_negatif);
+            $total_dokumen_positif = count($pendapat_positif);
+            $total_dokumen_negatif = count($pendapat_negatif);
 
-        // cari prior probability
-        $total_dokumen = count($pendapat_positif) + count($pendapat_negatif);
-        $total_dokumen_positif = count($pendapat_positif);
-        $total_dokumen_negatif = count($pendapat_negatif);
+            $prior_probability['+'] = (float)$total_dokumen_positif / (float)$total_dokumen;
+            $prior_probability['-'] = (float)$total_dokumen_negatif / (float)$total_dokumen;
 
-        $prior_probability['+'] = (float)$total_dokumen_positif / (float)$total_dokumen;
-        $prior_probability['-'] = (float)$total_dokumen_negatif / (float)$total_dokumen;
+            // ===============================
 
-        // ===============================
+            $this->load->model('data_m');
+            $pendapat = $this->POST('pendapat');
 
-        $this->load->model('data_m');
-        $pendapat = 'Saya ingin pindah kejurusan lain, karena informatika sangat sulit bagi saya';
-        echo $pendapat . '<br>';
-        $pendapat = $this->preprocessing->casefolding($pendapat);
-        $pendapat = $this->preprocessing->stem($pendapat);
-        $pendapat = $this->preprocessing->tokenizing2($pendapat, ' ');
-        $pendapat = $this->preprocessing->stopwords_removal2($pendapat);
-        $pos_probability = 1 * $prior_probability['+'];
-        $neg_probability = 1 * $prior_probability['-'];
-        foreach ($pendapat as $kata)
-        {
-            $posterior = $this->data_m->get_row(['kata' => $kata]);
-            if ($posterior)
+            $pendapat = $this->preprocessing->casefolding($pendapat);
+            $pendapat = $this->preprocessing->stem($pendapat);
+            $pendapat = $this->preprocessing->tokenizing2($pendapat, ' ');
+            $pendapat = $this->preprocessing->stopwords_removal2($pendapat);
+            $pos_probability = 1 * $prior_probability['+'];
+            $neg_probability = 1 * $prior_probability['-'];
+            foreach ($pendapat as $kata)
             {
-                $pos_probability *= $posterior->bobot_positif;
-                $neg_probability *= $posterior->bobot_negatif;
+                $posterior = $this->data_m->get_row(['kata' => $kata]);
+                if ($posterior)
+                {
+                    $pos_probability *= $posterior->bobot_positif;
+                    $neg_probability *= $posterior->bobot_negatif;
+                }
             }
-        }
 
 
-        if ($pos_probability > $neg_probability)
-        {
-            echo '+';
+            if ($pos_probability > $neg_probability)
+            {
+                $hasil = "Positif";
+            }
+            elseif($pos_probability < $neg_probability)
+            {
+                $hasil = "Negatif";
+            }
+            else
+            {
+                $hasil = "Netral";
+            }
+
         }
-        else
-        {
-            echo '-';
-        }
+
+        $this->data['title']    = 'Input Pendapat';
+        $this->data['content']  = 'input_pendapat';
+        $this->data['pendapat'] = $pendapat_awal;
+        $this->data['hasil']    = $hasil;
+        $this->data['nilai_positif']    = $pos_probability;
+        $this->data['nilai_negatif']    = $neg_probability;
+        $this->template($this->data, 'input');
     }
+
 }

@@ -9,12 +9,21 @@
 			}
 			?>
 		</div>
-		<?= form_open('Proses/analysis') ?>
+		<?= form_open('Proses/testing') ?>
 			<div class="form-group">
-				<textarea class="form-control" name="text_input"></textarea>
+				<textarea class="form-control" name="pendapat"></textarea>
 				<button type="submit" name="submit-input" class="btn btn-success" value="Submit" style="margin-top: 2%;"><i class="fa fa-check"> Submit</i></button>
 			</div>
 		<?= form_close() ?>
+	</div>
+
+	<div class="row" style="text-align: center;">
+		<p>
+			Pendapat anda adalah <?= $pendapat ?> . <br>Hasil Analisis dengan metode Naive Bayes maka pendapat anda bernilai <strong><?= $hasil ?></strong>. <br> <br>
+			<strong>Positif : <?= $nilai_positif ?></strong><br>
+			<strong>Negatif : <?= $nilai_negatif ?></strong>
+		</p>
+
 	</div>
 	
 	
