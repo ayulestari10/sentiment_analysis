@@ -17,15 +17,15 @@
 		<?= form_close() ?>
 	</div>
 
+	<?php if(isset($pendapat) && isset($hasil) && isset($nilai_positif) && isset($nilai_negatif)): ?>
 	<div class="row" style="text-align: center;">
 		<p>
 			Pendapat anda adalah <?= $pendapat ?> . <br>Hasil Analisis dengan metode Naive Bayes maka pendapat anda bernilai <strong><?= $hasil ?></strong>. <br> <br>
 			<strong>Positif : <?= $nilai_positif ?></strong><br>
 			<strong>Negatif : <?= $nilai_negatif ?></strong>
 		</p>
-
 	</div>
-	
+	<?php endif; ?>
 	
 	<div class="row">
 		<?php if(isset($casefolding)): ?>
