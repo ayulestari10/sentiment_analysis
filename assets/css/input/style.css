@@ -1,7 +1,7 @@
 #home {
 	background: url(../bg_analisis.png) no-repeat center center fixed;
   	background-size: cover;
-  	height: 700px;
+  	height: 800px;
   	margin-bottom: 0;
   	text-align: center;
  }
@@ -31,7 +31,7 @@
 	border-radius: 10px;
 	padding-left: 25%;
 	padding-right: 25%;
-	margin-top: 5%;
+	margin-top: 3%;
 
 }
 

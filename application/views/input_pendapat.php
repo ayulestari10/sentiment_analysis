@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark size-middle fixed-bottom">
+<nav class="navbar navbar-expand-lg navbar-dark size-middle fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">DAZZLE</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
 <section id="home">
 	<div class="container-fluid">
 		<center>
-			<img style="margin-top: 5%" src="<?=base_url('assets/img/logo/asof-white.png')?>">
+			<img style="margin-top: 10%" src="<?=base_url('assets/img/logo/asof-white.png')?>">
 		</center>
 	</div>
 	<div class="container transparant padding-16 color" style="text-align: center; padding: 5%;">
@@ -48,7 +48,7 @@
 	</div>
 	<div class="container box">
 		<?php if(isset($pendapat) && isset($hasil) && isset($nilai_positif) && isset($nilai_negatif)): ?>
-		<div class="container" style="padding-top: 2%">
+		<div class="container" style="padding-top: 1%">
 			<center>
 				<h5 style="margin-bottom: 2%"><strong>Hasil Analisis</strong></h5>
 				<p>
