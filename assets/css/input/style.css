@@ -1,5 +1,5 @@
 #home {
-	background: url('http://www.greatwhitenorth.com/wp-content/uploads/Generic_BG09_Dark.png')no-repeat center center fixed;
+	background: url(../bg_analisis.png) no-repeat center center fixed;
   	background-size: cover;
   	height: 700px;
   	margin-bottom: 0;
@@ -79,5 +79,6 @@ img {
 	background-size: cover;
   	padding-top : 80px;
   	padding-bottom: 50px;
-  	background-color: #f1eff1;
+  	/*background-color: #f1eff1;*/
+  	background: url(../bg_about.png) no-repeat;
 }
