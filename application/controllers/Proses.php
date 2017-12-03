@@ -33,9 +33,8 @@ class Proses extends MY_Controller
 
     /**
      *  Method ini digunakan untuk melakukan proses input pendapat dan analisis.
-     *  @author Ayu Lestari
+     *  @author Dazzle
      *  @return msg (positif, negatif, netral)
-
     */
     public function analysis(){
         
@@ -66,12 +65,11 @@ class Proses extends MY_Controller
     }
 
     /**
-     *  Method ini digunakan untuk melakukan praproses data.
-     *  @author Ayu Lestari
+     *  Method ini digunakan untuk melakukan praproses file.
+     *  @author Dazzle
      *  @return array dua dimensi
-
     */
-    public function praproses_data($data){
+    public function praproses_file($data){
         $stem = [];
 
         $casefolding        = $this->preprocessing->casefolding($data);
@@ -90,26 +88,26 @@ class Proses extends MY_Controller
         return $stopwords_removal;
     }
 
-    public function preprocess_document($data)
-    {
-        $stem = [];
-
-        $casefolding        = $this->preprocessing->casefolding($data[0]);
-
-        $sentence_splitter  = $this->preprocessing->sentence_splitter($casefolding);
-
-        foreach($sentence_splitter as $sentence){
-            $stem []= $this->preprocessing->stem($sentence);
-        }
-
-        $tokenizing         = $this->preprocessing->tokenizing($stem, ' ');
+    /**
+     *  Method ini digunakan untuk melakukan praproses file.
+     *  @author Dazzle
+     *  @return array dua dimensi
+    */
+    public function praproses_pendapat($data){
         
-        // array hasil stopword removal itu tidak semuanya ada. bisa array(2){[1]=> "Aku",[3]=> "lala"}
-        $stopwords_removal  = $this->preprocessing->stopwords_removal($tokenizing);
-        $stopwords_removal = array_filter($stopwords_removal, function($v) {return count($v) <= 0 ? false : true;});
-        return $stopwords_removal;
+        $data = $this->preprocessing->casefolding($data);
+        $data = $this->preprocessing->stem($data);
+        $data = $this->preprocessing->tokenizing2($data, ' ');
+        $data = $this->preprocessing->stopwords_removal2($data);
+
+        return $data;
     }
 
+    /**
+     *  Method ini digunakan untuk melakukan pelatihan.
+     *  @author Dazzle
+     *  @return void
+    */
     public function training(){
         // Membaca data latih
         $pendapat_positif = $this->preprocessing->read_file_by_line('positif');
@@ -125,8 +123,8 @@ class Proses extends MY_Controller
         $prior_probability['-'] = (float)$total_dokumen_negatif / (float)$total_dokumen;
 
         // lakukan praproses data
-        $praproses_pendapat_positif = $this->praproses_data($pendapat_positif);
-        $praproses_pendapat_negatif = $this->praproses_data($pendapat_negatif);
+        $praproses_pendapat_positif = $this->praproses_file($pendapat_positif);
+        $praproses_pendapat_negatif = $this->praproses_file($pendapat_negatif);
 
         $frekuensi_kata = []; // untuk semua kategori
         $frekuensi_kata_positif = [];
@@ -229,6 +227,11 @@ class Proses extends MY_Controller
         // $this->dump($frekuensi_kata_negatif);
     }
 
+    /**
+     *  Method ini digunakan untuk melakukan pengujian.
+     *  @author Dazzle
+     *  @return void
+    */
     public function testing()
     {
         if($this->POST('submit-input')){
@@ -250,10 +253,7 @@ class Proses extends MY_Controller
             $this->load->model('data_m');
             $pendapat = $this->POST('pendapat');
 
-            $pendapat = $this->preprocessing->casefolding($pendapat);
-            $pendapat = $this->preprocessing->stem($pendapat);
-            $pendapat = $this->preprocessing->tokenizing2($pendapat, ' ');
-            $pendapat = $this->preprocessing->stopwords_removal2($pendapat);
+            $pendapat = $this->praproses_pendapat($pendapat);
             $pos_probability = 1 * $prior_probability['+'];
             $neg_probability = 1 * $prior_probability['-'];
             foreach ($pendapat as $kata)

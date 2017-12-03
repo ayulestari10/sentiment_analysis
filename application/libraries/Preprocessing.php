@@ -4,7 +4,7 @@ class Preprocessing{
 
     /**
      *    Method ini digunakan untuk praproses casefolding.
-     *    @author Ayu Lestari
+     *    @author Dazzle
      *    @param data -> pendapat dalam kalimat atau paragraf
      *    @return data
     */
@@ -23,7 +23,7 @@ class Preprocessing{
 
     /**
      *    Method ini digunakan untuk praproses data memisah paragraf menjadi kalimat.
-     *    @author Ayu Lestari
+     *    @author Dazzle
      *    @param data -> pendapat
      *    @return array kalimat
     */
@@ -37,7 +37,7 @@ class Preprocessing{
 
     /**
      *    Method ini digunakan untuk praproses stemming.
-     *    @author Ayu Lestari
+     *    @author Dazzle
      *    @param kalimat
      *    @return string
     */
@@ -53,7 +53,7 @@ class Preprocessing{
     /**
      *    Method ini digunakan untuk praproses tokenizing.
      *
-     *    @author Ayu Lestari
+     *    @author Dazzle
      *    @param data -> pendapat yang sudah dilakukan sentence splitter
      *    @param delimiter/pemisah
      *    @return assosiative array
@@ -82,7 +82,7 @@ class Preprocessing{
     /**
      *  Method ini digunakan untuk praproses stopword_removal.
      *
-     *  @author Ayu Lestari
+     *  @author Dazzle
      *  @param data -> token2
      *  @return array of object
     */
@@ -109,7 +109,7 @@ class Preprocessing{
 
     /**
      *    Method ini digunakan untuk membaca file.
-     *    @author Ayu Lestari
+     *    @author Dazzle
      *    @param nama file
      *    @return konten dalam file
     */
@@ -125,7 +125,7 @@ class Preprocessing{
 
     /**
      *    Method ini digunakan untuk membaca konten file perbaris.
-     *    @author Ayu Lestari
+     *    @author Dazzle
      *    @param nama file
      *    @return array setiap baris konten dokumen
     */
