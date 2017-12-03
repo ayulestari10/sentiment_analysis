@@ -34,10 +34,7 @@
 	<div class="container transparant padding-16 color" style="text-align: center; padding: 5%;">
 		<h5 style="margin-bottom: 2%;">Masukkan Pendapat Anda</h5>
 		<div>
-			<?php if(isset($msg)) {
-				echo $msg;	
-			}
-			?>
+			<?= $this->session->flashdata('msg') ?>
 		</div>
 		<?= form_open('Proses/testing') ?>
 			<div class="form-group">

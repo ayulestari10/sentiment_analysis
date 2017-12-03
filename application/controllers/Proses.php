@@ -200,7 +200,7 @@ class Proses extends MY_Controller
             $posterior_probability[$kata]['-'] = (float)($frekuensi_neg + 1) / (float)($total_kata_unik_negatif + $total_kata_unik);
         }
 
-        $this->dump($posterior_probability);
+        //$this->dump($posterior_probability);
         $this->load->model('data_m');
         foreach ($posterior_probability as $kata => $probability)
         {
@@ -221,6 +221,9 @@ class Proses extends MY_Controller
                 ]);
             }
         }
+
+        $this->flashmsg('Pelatihan telah selesai dilakukan!','success');
+        redirect('Proses');
 
         // $this->dump($frekuensi_kata);
         // $this->dump($frekuensi_kata_positif);
